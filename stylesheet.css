@@ -15,14 +15,20 @@ body {
 #test {
     display: flex;
     flex-wrap: wrap;
-    max-width: 600px;
-    max-height: 600px;
+    max-width: 610px;
+    max-height: 610px;
+    gap: 5px;
     align-content: center;
     justify-content: center;
     margin: auto;
+    background-color: rgba(255, 255, 255, 0.582);
 }
 
 #gameBlock {
-    background-color: aliceblue;
+    background-color: rgba(255, 255, 255, 0.863);
+    font-size: 170px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 
 }
