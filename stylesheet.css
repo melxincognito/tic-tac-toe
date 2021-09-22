@@ -1,0 +1,28 @@
+header {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 20px;
+    font-size: 37px;
+    font-family: 'Gemunu Libre', sans-serif;
+}
+
+body {
+    background-color: pink;
+}
+
+
+#test {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+    max-height: 600px;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+}
+
+#gameBlock {
+    background-color: aliceblue;
+
+}
