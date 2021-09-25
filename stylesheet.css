@@ -12,7 +12,7 @@ body {
 }
 
 
-#test {
+.container {
     display: flex;
     flex-wrap: wrap;
     max-width: 610px;
@@ -24,11 +24,10 @@ body {
     background-color: rgba(255, 255, 255, 0.582);
 }
 
-#gameBlock {
-    background-color: rgba(255, 255, 255, 0.863);
-    font-size: 170px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
 
+
+.box {
+    background-color: aliceblue;
+    width: 200px;
+    height: 200px;
 }
