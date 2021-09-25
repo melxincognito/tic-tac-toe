@@ -1,3 +1,4 @@
+
 let currentPlayer;
 
 function Player(name, marker) {
@@ -7,6 +8,11 @@ function Player(name, marker) {
         alert("NEW PLAYER: " + name.toUpperCase() + " MARKER: '" + marker.toUpperCase() + "'")
     }
 }
+const playGame = () => {
+    board.boxes.forEach((box) => {
+        box.addEventListener('click', boxClicked);
+    });
+};
 
 
 const board = (() => {
@@ -31,6 +37,27 @@ const newPlayers = ((playerOne, playerTwo) => {
 
 })();
 
+const boxClicked = (e) => {
+    const id = e.target.id;
+
+    const markO = newPlayers.playerOne.marker;
+    const markX = newPlayers.playerTwo.marker;
+    currentPlayer = currentPlayer === markO ? markX : markO;
+
+    if(!board.spaces[id]){
+            board.spaces[id] = currentPlayer;
+            e.target.innerText = currentPlayer;
+
+            if(playerHasWon()) {
+                alert(`${currentPlayer} has won!`);
+                return
+            }
+    }
+    return {
+        markO, markX, currentPlayer
+    }
+
+};
 
 
 const playerHasWon = () => {
@@ -69,28 +96,21 @@ const playerHasWon = () => {
  }
 
 
-const boxClicked = (e) => {
-    const id = e.target.id;
 
-    const markO = newPlayers.playerOne.marker;
-    const markX = newPlayers.playerTwo.marker;
-    currentPlayer = currentPlayer === markO ? markX : markO;
-
-    if(!board.spaces[id]){
-            board.spaces[id] = currentPlayer;
-            e.target.innerText = currentPlayer;
-
-            if(playerHasWon()) {
-                console.log(`${currentPlayer} has won!`);
-                return
-            }
-    }
+const restart = () => {
+    board.spaces = [];
+    board.boxes.forEach((box) => {
+        box.innerText = '';
+    })
+    currentPlayer = null;
 
 };
 
-const playGame = (() => {
-    board.boxes.forEach((box) => {
-        box.addEventListener('click', boxClicked);
-    });
-})();
+
+
+document.getElementById('reset').addEventListener('click', restart)
+
+
+restart()
+playGame()
 
