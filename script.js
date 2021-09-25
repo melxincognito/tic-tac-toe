@@ -1,8 +1,4 @@
-(function () {
-    var foo = "bar";
-    console.log(foo);
-})();
-
+let currentPlayer;
 
 function Player(name, marker) {
     this.name = name, 
@@ -35,29 +31,6 @@ const newPlayers = ((playerOne, playerTwo) => {
 
 })();
 
-const playGame = () => {
-    board.boxes.forEach((box) => {
-        box.addEventListener('click', boxClicked);
-    });
-};
-
-const boxClicked = (e) => {
-    const id = e.target.id;
-
-    const markO = newPlayers.playerOne.marker;
-    const markX = newPlayers.playerTwo.marker;
-    let currentPlayer;
-    currentPlayer = currentPlayer === markO ? markX : markO ;
-
-    if(!board.spaces[id]){
-            board.spaces[id] = currentPlayer;
-            e.target.innerText = currentPlayer;
-            if(playerHasWon()) {
-                console.log(`${currentPlayer} has won!`);
-                return
-            }
-
-};
 
 
 const playerHasWon = () => {
@@ -94,10 +67,30 @@ const playerHasWon = () => {
         }
     }
  }
-}
 
 
+const boxClicked = (e) => {
+    const id = e.target.id;
 
+    const markO = newPlayers.playerOne.marker;
+    const markX = newPlayers.playerTwo.marker;
+    currentPlayer = currentPlayer === markO ? markX : markO;
 
+    if(!board.spaces[id]){
+            board.spaces[id] = currentPlayer;
+            e.target.innerText = currentPlayer;
 
-playGame()
+            if(playerHasWon()) {
+                console.log(`${currentPlayer} has won!`);
+                return
+            }
+    }
+
+};
+
+const playGame = (() => {
+    board.boxes.forEach((box) => {
+        box.addEventListener('click', boxClicked);
+    });
+})();
+
