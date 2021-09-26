@@ -2,7 +2,6 @@ header {
     display: flex;
     align-content: center;
     justify-content: center;
-    padding: 20px;
     font-size: 37px;
     font-family: 'Gemunu Libre', sans-serif;
 }
@@ -10,6 +9,39 @@ header {
 body {
     background-color: pink;
 }
+
+#battleText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.resetBtn {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-bottom: 20px;
+}
+
+
+
+#gameContainer {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 30px;
+   
+}
+
+button {
+    background-color: rgba(75, 44, 100, 0.521);
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-family: 'Gemunu Libre', sans-serif;
+    max-height: 50px;
+ }
 
 
 .container {
@@ -20,14 +52,21 @@ body {
     gap: 5px;
     align-content: center;
     justify-content: center;
-    margin: auto;
-    background-color: rgba(255, 255, 255, 0.582);
+    background-color: rgba(255, 255, 255, 0.452);
+    border-radius: 25px;
 }
 
 
 
 .box {
-    background-color: aliceblue;
+    background-color: rgba(255, 244, 227, 0.616);
     width: 200px;
     height: 200px;
+    font-size: 170px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    border-radius: 20px;
+    font-family: 'Gemunu Libre', sans-serif;
 }

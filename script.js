@@ -3,11 +3,10 @@ let currentPlayer;
 
 function Player(name, marker) {
     this.name = name, 
-    this.marker = marker,
-    this.playerInfo = () => {
-        alert("NEW PLAYER: " + name.toUpperCase() + " MARKER: '" + marker.toUpperCase() + "'")
-    }
+    this.marker = marker
 }
+
+
 const playGame = () => {
     board.boxes.forEach((box) => {
         box.addEventListener('click', boxClicked);
@@ -37,6 +36,8 @@ const newPlayers = ((playerOne, playerTwo) => {
 
 })();
 
+
+
 const boxClicked = (e) => {
     const id = e.target.id;
 
@@ -49,7 +50,11 @@ const boxClicked = (e) => {
             e.target.innerText = currentPlayer;
 
             if(playerHasWon()) {
-                alert(`${currentPlayer} has won!`);
+                var round = 0;
+                var winningPlayer = document.createElement('div');
+                round++;
+                winningPlayer.innerHTML = `Round: ${round} - ${currentPlayer} has won!`;
+                document.getElementById('playerCards').appendChild(winningPlayer);
                 return
             }
     }
