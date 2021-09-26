@@ -18,9 +18,10 @@ const board = (() => {
     const boxes = Array.from(document.getElementsByClassName('box'));
     const spaces = [];
     const players = [];
+    var round = 0;
 
 
-    return { boxes, spaces, players }
+    return { boxes, spaces, players, round }
 })();
 
 const newPlayers = ((playerOne, playerTwo) => {
@@ -36,6 +37,26 @@ const newPlayers = ((playerOne, playerTwo) => {
 
 })();
 
+const makePlayerCard = (() => {
+    const playerOneCard = document.createElement('div');
+    const playerTwoCard = document.createElement('div');
+    playerOneName = document.createElement('h3');
+    playerOneMarker = document.createElement('h3');
+    playerTwoName = document.createElement('h3');
+    playerTwoMarker = document.createElement('h3');
+    playerOneName.innerHTML = `Player: ${newPlayers.playerOne.name}`;
+    playerOneMarker.innerHTML = `Marker: '${newPlayers.playerOne.marker}'`;
+    playerTwoName.innerHTML = `Player: ${newPlayers.playerTwo.name}`;
+    playerTwoMarker.innerHTML = `Marker: '${newPlayers.playerTwo.marker}'`;
+    playerOneCard.appendChild(playerOneName);
+    playerOneCard.appendChild(playerOneMarker);
+    playerTwoCard.appendChild(playerTwoName);
+    playerTwoCard.appendChild(playerTwoMarker);
+    document.getElementById('players').appendChild(playerOneCard);
+    document.getElementById('players').appendChild(playerTwoCard);
+})();
+
+
 
 
 const boxClicked = (e) => {
@@ -44,18 +65,18 @@ const boxClicked = (e) => {
     const markO = newPlayers.playerOne.marker;
     const markX = newPlayers.playerTwo.marker;
     currentPlayer = currentPlayer === markO ? markX : markO;
+    
 
     if(!board.spaces[id]){
             board.spaces[id] = currentPlayer;
             e.target.innerText = currentPlayer;
 
             if(playerHasWon()) {
-                var round = 0;
                 var winningPlayer = document.createElement('div');
-                round++;
-                winningPlayer.innerHTML = `Round: ${round} - ${currentPlayer} has won!`;
+                round = board.round += 1;
+                winningPlayer.innerHTML = `Round ${round} - ${currentPlayer} has won!`;
                 document.getElementById('playerCards').appendChild(winningPlayer);
-                return
+                return round; 
             }
     }
     return {
@@ -97,6 +118,11 @@ const playerHasWon = () => {
             alert(`${currentPlayer} wins center vertical, hooyaa`)
             return true;
         }
+        if(board.spaces[2] == currentPlayer && board.spaces[6] == currentPlayer) {
+            alert(`${currentPlayer} wins diagnal, putera`)
+            return true;
+        }
+
     }
  }
 
