@@ -5,6 +5,29 @@ function Player(name, marker) {
     this.name = name, 
     this.marker = marker
 }
+let array = []
+
+class Playerr {
+    constructor(name, marker) {
+        this.name = name;
+        this.marker = marker;
+    }
+
+    sayHi() {alert(this.name)};
+
+    newPlayers() { 
+        var player1Name = prompt('enter player one name');
+        var player1Marker = 'O';
+        var player1 = new Playerr(player1Name, player1Marker);
+        var player2Name = prompt('enter player two name');
+        var player2Marker = 'X';
+        var player2 = new Playerr(player2Name, player2Marker);
+        array.push(player1, player2);
+
+    }
+}
+
+
 
 
 const playGame = () => {
